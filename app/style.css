@@ -70,3 +70,134 @@ html {
     border: 1px solid #000000;
 }
 
+.sidebar_right .nav-item {
+    margin-left: 2px;
+    margin-top: 10px;
+}
+
+.sidebar_right .pills-news {
+    overflow-y: scroll;
+    height: 80vh;
+}
+
+.sidebar_right #pills-chatbot .card #input-section{
+    width: 100%;
+}
+
+.sidebar_right #pills-news .newsitems {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.sidebar_right #pills-chatbot .card #input-section .recordside {
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
+.sidebar_right #pills-chatbot .card #input-section .stoprecordside {
+    margin-bottom: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 0.5vw;
+}
+
+.sidebar_right #pills-chatbot .card #input-section .searchside {
+    margin-bottom: 10px;
+    font-size: 0.5vw;
+}
+
+.sidebar_right #pills-chatbot .card #input-section .TTS {
+    display: none;
+}
+
+.sidebar_right #pills-shopping {
+    overflow-y: scroll; 
+    height: 80vh; 
+}
+
+.sidebar_right #pills-shopping .shoppingitems {
+    display: flex; 
+    flex-direction: column; 
+    flex-wrap: wrap;
+}
+
+body .card {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    margin-top: 10px;
+    box-shadow: 2vw 2vw 12vw 3vw #ccc;
+}
+
+body .card #message-section::-webkit-scrollbar {
+    width: 10px;
+}
+body .card #message-section {
+    height: 70vh;
+    padding: 0 2.5vw;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+body .card #message-section::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+}
+body .card #message-section::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG);
+    border-radius: 6px;
+    border: 3px solid var(--scrollbarBG);
+}
+body .card #message-section #bot,
+body .card #message-section #user {
+    position: relative;
+    bottom: 0;
+    min-height: 1.5vw;
+    border: 0.15vw solid #777;
+    background-color: #fff;
+    border-radius: 0px 1.5vw 1.5vw 1.8vw;
+    padding: 1vw;
+    margin: 1.5vw 0;
+}
+body .card #message-section #user {
+    border: 1.5px solid #000;
+    border-radius: 1.5vw 0vw 1.5vw 1.8vw;
+    background-color: #000;
+    float: right;
+}
+body .card #message-section #user #user-response {
+    color: #fff;
+}
+body .card #message-section .message {
+    color: #000;
+    clear: both;
+    line-height: 1.2vw;
+    font-size: 1.2vw;
+    padding: 8px;
+    position: relative;
+    margin: 8px 0;
+    max-width: 85%;
+    word-wrap: break-word;
+    z-index: 2;
+}
+body .card #input-section {
+    z-index: 1;
+    padding: 0 2.5vw;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    overflow: hidden;
+    height: 6vw;
+    width: 100%;
+}
+body .card #input-section input {
+    color: #000;
+    outline: none;
+    height: 30px;
+    width: 26vw;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #000 1px;
+    margin-bottom: 10px;
+}

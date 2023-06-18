@@ -53,15 +53,73 @@
                     </div>        
                 </div>
             </div>
-            
         </div>
 
         <!-- sidebar_right -->
         <div class="d-flex flex-column sidebar_right">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                        Trang chủ
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-news-tab" data-bs-toggle="pill" data-bs-target="#pills-news" type="button" role="tab" aria-controls="pills-news" aria-selected="false">
+                        Tin tức
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-chatbot-tab" data-bs-toggle="pill" data-bs-target="#pills-chatbot" type="button" role="tab" aria-controls="pills-chatbot" aria-selected="false">
+                        Chatbot
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-shopping-tab" data-bs-toggle="pill" data-bs-target="#pills-shopping" type="button" role="tab" aria-controls="pills-shopping" aria-selected="false">
+                        Mua sắm
+                    </button>
+                </li>
+            </ul>
 
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    Trang chủ
+                </div>
+
+                <div class="tab-pane fade" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab">
+                    <div class="newsitems"></div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-chatbot" role="tabpanel" aria-labelledby="pills-chatbot-tab">
+                    <div class="card"> 
+                        <div id="message-section">
+                            <div class="message" id="bot">
+                                <span id="bot-response">Hãy hỏi tôi bất kỳ điều gì</span>
+                            </div>
+                        </div>
+
+                        <div id="input-section">
+                            <input id="input" type="text" placeholder="Soạn tin nhắn" autocomplete="off" autofocus="autofocus" class="searchbarside" style="width: 100vh;">
+                            <button type="button" class="btn btn-outline-primary recordside">Mic</button>
+                            <button type="button" class="btn btn-outline-primary stoprecordside">Kết thúc</button>
+                            <button type="button" class="btn btn-outline-primary searchside" onclick="sendMessage()">Tìm kiếm</button>
+                            <audio controls autoplay class="TTS" src=""></audio> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-shopping" role="tabpanel" aria-labelledby="pills-shopping-tab">                       
+                    <div class="shoppingitems"></div>
+                </div>
+            </div>
         </div>
     </div>
-    <script src="app.js"></script>
+
+    
+    <script src="./modules/variable.js"></script>
+    <script src="./modules/windowLoad.js"></script> 
+    <script src="./modules/search.js"></script>  
     <script src="./modules/clock.js"></script>
+    <script src="./modules/mode.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
