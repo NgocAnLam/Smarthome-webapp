@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@google-cloud/speech": "^5.5.0",
+    "@google-cloud/text-to-speech": "^4.2.2",
+    "nodemon": "^2.0.22",
+    "openai": "^3.3.0"
+  }
+}

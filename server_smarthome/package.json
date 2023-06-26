@@ -1,0 +1,38 @@
+{
+  "name": "smarthome",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js --ext html, js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@google-cloud/speech": "^5.4.1",
+    "@google-cloud/text-to-speech": "^4.2.2",
+    "compromise": "^14.9.0",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.0.0",
+    "form-data": "^4.0.0",
+    "google-auth-library": "^8.8.0",
+    "helmet": "^7.0.0",
+    "mathjs": "^11.8.0",
+    "mongoose": "^7.2.2",
+    "multer": "^1.4.5-lts.1",
+    "natural": "^6.3.0",
+    "node-kmeans": "^1.1.9",
+    "node-vntokenizer": "^0.0.2",
+    "openai": "^3.2.1",
+    "python-shell": "^5.0.0",
+    "record": "^0.2.0",
+    "recorder-js": "^1.0.7",
+    "selenium-webdriver": "^4.10.0",
+    "xml2js": "^0.6.0",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {
+    "express": "^4.18.2",
+    "google-search-results-nodejs": "^2.1.0",
+    "node-nlp": "^4.27.0"
+    
+  }
+}

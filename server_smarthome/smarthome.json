@@ -1,0 +1,68 @@
+{
+  "phòng khách": {
+    "đèn": {
+      "idDiv": "living_light_0",
+      "trạng thái": 0,
+      "độ sáng": 2
+    },
+    "đèn 1": {
+      "idDiv": "living_light_1",
+      "trạng thái": 0,
+      "độ sáng": 2
+    },
+    "đèn 2": {
+      "idDiv": "living_light_2",
+      "trạng thái": 0,
+      "độ sáng": 2
+    },
+    "quạt": {
+      "idDiv": "living_fan",
+      "trạng thái": 1,
+      "tốc độ": 2
+    },
+    "loa":{
+      "idDiv": "living_fan",
+      "trạng thái": 1,
+      "tốc độ": 2
+    }   
+  },
+  "phòng ngủ": {
+    "đèn": {
+      "idDiv": "bed_light",
+      "trạng thái": 0,
+      "độ sáng": 0
+    },
+    "loa": {
+      "idDiv": "bed_speaker",
+      "trạng thái": 1,
+      "âm lượng": 0
+    },
+    "máy lạnh":{
+      "idDiv": "bed_air_conditioner",
+      "trạng thái": 1,
+      "nhiệt độ": 26
+    },
+    "máy chiếu": {
+      "idDiv": "bed_projecter",
+      "trạng thái": 0,
+      "độ sáng": 20 
+    }
+  },
+  "nhà bếp": {
+    "đèn": {
+      "idDiv": "kitchen_light",
+      "trạng thái": 0,
+      "độ sáng": 0
+    },
+    "loa": {
+      "idDiv": "kitchen_speaker",
+      "trạng thái": 1,
+      "âm lượng": 0
+    },
+    "tủ lạnh": {
+      "idDiv": "kitchen_fridge",
+      "trạng thái": 1,
+      "nhiệt độ": 12
+    }
+  }
+}

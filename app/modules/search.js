@@ -1,9 +1,14 @@
 function sendMessageHome() {
     const inputField = searchbarhome.value;
-    console.log(inputField);
     let input = inputField.trim();
     input != "" && output(input);
     inputField.value = "";
+}
+
+searchhome.onclick = function (){
+    sendMessageHome();
+    searchbarside.value = "";
+    searchbarhome.value = "";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -21,7 +26,7 @@ function addShoppingItems(data){
     const mainDiv = document.querySelector(".shoppingitems");
     let userDiv = document.createElement("div");
     userDiv.className = "d-flex flex-row cardshopping";
-    userDiv.style = "width: 90%; border: 1px solid black; margin: 5px;";
+    userDiv.style = "width: 100%; border: 1px solid black; margin: 5px;";
     userDiv.classList.add("message1");
     userDiv.innerHTML = `<span>${data}</span>`;
     mainDiv.appendChild(userDiv);
@@ -37,32 +42,13 @@ function output(text) {
         console.log(message.category);
 
         // IOT
-        // if (message.category == 1){
-        //     let url = "http://127.0.0.1:8000/api/iot";
-        //     fetch(url, {
-        //         method: 'POST',
-        //         headers: {'Content-Type': 'text/plain'}, 
-        //         body: message.STTRes
-        //     })
-        //     .then(response => response.json())
-        //     .then(message => {
-        //         const data = message.Data;
-        //         valueLivLight.textContent = data["phòng khách"]["đèn"]["độ sáng"];
-        //         valueLivFan.textContent = data["phòng khách"]["quạt"]["tốc độ"];
-        //         valueBedLight.textContent = data["phòng ngủ"]["đèn"]["độ sáng"];
-        //         valueBedTivi.textContent = data["phòng ngủ"]["tivi"]["âm lượng"];
-        //         statusLivLight.checked = data["phòng khách"]["đèn"]['trạng thái'] === 1;
-        //         statusLivFan.checked = data["phòng khách"]["quạt"]['trạng thái'] === 1;
-        //         statusBedLight.checked = data["phòng ngủ"]["đèn"]['trạng thái'] === 1;
-        //         statusBedTivi.checked = data["phòng ngủ"]["tivi"]['trạng thái'] === 1;
-        //     })
-        //     .catch(error => {console.error(error)});    
-        // }
+        if(message.category == 1) {
+            postIOT("http://127.0.0.1:8000/api/iot", message.STTRes)
+            getIOT("http://127.0.0.1:8000/api/smarthome.json");       
+        }
 
         // Shopping
-        if (message.category == 2){
-            let url = "http://127.0.0.1:8000/api/shopping";
-
+        if (message.category == 2) {
             pillsChatbotTab.className = 'nav-link';
             pillsHomeTab.className = 'nav-link';
             pillsNewsTab.className = 'nav-link';
@@ -71,67 +57,11 @@ function output(text) {
             pillsHome.className = 'tab-pane fade';
             pillsNews.className = 'tab-pane fade';
             pillsShopping.className = 'tab-pane fade show active';
-            
-            fetch(url, {
-                method: 'POST', 
-                headers: {'Content-Type': 'text/plain'}, 
-                body: message.STTRes
-            })
-            .then(response => response.json())
-            .then(message => {
-                const jsondata = message.jsondata;
-                for (let i = 0; i < jsondata.length; i++) {
-                    const { title, link, extracted_price, thumbnail } = jsondata[i];
-                    
-                    const card = document.createElement('div');
-                    card.className = 'd-flex flex-row cardshopping';
-                    card.style.width = '90%';
-                    card.style.border = '1px solid black';
-                    card.style.margin = '5px';
-                    
-                    const img = document.createElement('img');
-                    img.className = 'd-flex flex-row card-img-top';
-                    img.src = thumbnail;
-                    img.style.width = '30%';
-                    img.style.height = '100%';
-                    
-                    const cardBody = document.createElement('div');
-                    cardBody.className = 'd-flex flex-column card-body';
-                    
-                    const cardTitle = document.createElement('h5');
-                    cardTitle.className = 'card-title';
-                    cardTitle.style.fontSize = '10px';
-                    cardTitle.style.paddingTop = '5px';
-                    cardTitle.style.paddingLeft = '5px';
-                    cardTitle.textContent = title;
-                    
-                    const cardText = document.createElement('p');
-                    cardText.className = 'card-text';
-                    cardText.style.fontSize = '10px';
-                    cardText.style.paddingLeft = '5px';
-                    cardText.textContent = extracted_price;
-                    
-                    const buyLink = document.createElement('a');
-                    buyLink.href = link;
-                    buyLink.className = 'btn btn-primary';
-                    buyLink.textContent = 'Mua';
-                    
-                    // Append elements to the card
-                    card.appendChild(img);
-                    cardBody.appendChild(cardTitle);
-                    cardBody.appendChild(cardText);
-                    cardBody.appendChild(buyLink);
-                    card.appendChild(cardBody);
-
-                    const shoppingitems = document.querySelector('.shoppingitems');
-                    shoppingitems.appendChild(card);
-                }
-            })
-            .catch(error => {console.error(error)});
+            getShopping("http://127.0.0.1:8000/api/shopping", message.STTRes);       
         }
 
         // Question
-        if (message.category == 3){
+        if (message.category == 3) {
             addChatUser(message.STTRes);
             pillsChatbotTab.className = 'nav-link active';
             pillsHomeTab.className = 'nav-link';
@@ -142,30 +72,52 @@ function output(text) {
             pillsNews.className = 'tab-pane fade';
             pillsShopping.className = 'tab-pane fade';
 
-            let url = "http://127.0.0.1:8000/api/question";
-            let audio = "http://127.0.0.1:8000/api/TTS.mp3";
-            fetch(url, {
-                method: 'POST', 
-                headers: {'Content-Type': 'text/plain'}, 
-                body: message.STTRes
-            })
-            .then(response => response.json())
-            .then(message => {
-                console.log(message.ChatGPTRes);
-                addChatbot(message.ChatGPTRes);
-                $('.TTS').attr('src', audio);
-            })
-            .catch(error => {console.error(error)});
+            getQuestion('http://127.0.0.1:8000/api/question', 'http://127.0.0.1:8000/api/TTS.mp3', message.STTRes)
+        }
+
+        // Image
+        if (message.category == 4) {
+            addChatUser(message.STTRes);
+            pillsChatbotTab.className = 'nav-link active';
+            pillsHomeTab.className = 'nav-link';
+            pillsNewsTab.className = 'nav-link';
+            pillsShoppingTab.className = 'nav-link';
+            pillsChatbot.className = 'tab-pane fade show active';
+            pillsHome.className = 'tab-pane fade';
+            pillsNews.className = 'tab-pane fade';
+            pillsShopping.className = 'tab-pane fade';
+
+            getImage('http://127.0.0.1:8000/api/image_gen', message.STTRes);
+        }
+
+        // News
+        if (message.category == 5) {
+            pillsChatbotTab.className = 'nav-link ';
+            pillsHomeTab.className = 'nav-link';
+            pillsNewsTab.className = 'nav-link active';
+            pillsShoppingTab.className = 'nav-link';
+            pillsChatbot.className = 'tab-pane fade ';
+            pillsHome.className = 'tab-pane fade';
+            pillsNews.className = 'tab-pane fade show active';
+            pillsShopping.className = 'tab-pane fade';
+
+            getNews('http://127.0.0.1:8000/api/news');
         }
     })
     .catch(error => {console.error(error)});
 }
 
-function sendMessage() {
-    const inputField = document.getElementById("input");
-    let input = inputField.value.trim();
+function sendMessageSide() {
+    const inputField = searchbarside.value;
+    let input = inputField.trim();
     input != "" && output(input);
     inputField.value = "";
+}
+
+searchside.onclick = function (){
+    sendMessageSide();
+    searchbarside.value = "";
+    searchbarhome.value = "";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -195,9 +147,25 @@ document.addEventListener("DOMContentLoaded", () => {
 function addChatUser(input){
     const mainDiv = document.getElementById("message-section");
     let userDiv = document.createElement("div");
+    userDiv.style.margin = '0px';
     userDiv.id = "user";
     userDiv.classList.add("message");
     userDiv.innerHTML = `<span id="user-response">${input}</span>`;
+
+    let dateDiv = document.createElement("div");
+    const date = document.createElement('p');
+    date.style.fontSize = '10px';
+    date.style.textAlign = 'center';
+    var now = new Date();
+    const dayOfWeek = now.getDay();
+    const vietnameseDaysOfWeek = ['Chủ nhật','Thứ hai','Thứ ba','Thứ tư','Thứ năm','Thứ sáu','Thứ bảy'];
+    var date1 = now.getDate() + '/' + formatDigits((Number(now.getMonth()) + 1)).toString() + '/' + now.getFullYear();
+    var date2 = now.getHours() + ":" + formatDigits(now.getMinutes()) + ":" + formatDigits(now.getSeconds());
+    var time = vietnameseDaysOfWeek[dayOfWeek] + '   ' + date1 + '   ' + date2;
+    date.innerHTML = time;
+
+    dateDiv.appendChild(date);
+    mainDiv.appendChild(dateDiv);
     mainDiv.appendChild(userDiv);
 }
 
@@ -205,8 +173,22 @@ function addChatbot(output){
     const mainDiv = document.getElementById("message-section");
     let botDiv = document.createElement("div");
     botDiv.id = "bot";
-    botDiv.classList.add("message");
-    botDiv.innerHTML = `<span id="bot-response">${output}</span>`;
+    botDiv.style.margin = '80px 0px 10px 0px';
+    if (Array.isArray(output)) {
+        for (let i = 0; i < output.length; i++) {
+            const img = document.createElement('img');
+            img.className = 'd-flex flex-row card-img-top';
+            img.src = output[i].url;
+            img.style.width = '100%';
+            img.style.height = '100%';
+            botDiv.appendChild(img);
+        }
+    }
+    else {
+        botDiv.classList.add("message");
+        botDiv.style.whiteSpace = "pre-wrap";
+        botDiv.innerHTML = `<span id="bot-response">${output}</span>`;
+    }
     mainDiv.appendChild(botDiv);
     var scroll = document.getElementById("message-section");
     scroll.scrollTop = scroll.scrollHeight;
