@@ -13,16 +13,38 @@
     <div class="d-flex flex-row full_screen">
         <!-- sidebar_left -->
         <div class="d-flex flex-column sidebar_left">
-            <a href="#" class="d-flex title"><h4 class="title">Smarthome</h4></a><hr>
+            <a href="#" class="d-flex title"><h3 class="title">Smarthome</h3></a><hr>
             <ul class="nav flex-column">
-                <li><a href="#" class="nav-link link-dark">Bảng điều khiển</a></li>
-                <li><a href="#" class="nav-link link-dark device_mode">Quản lý thiết bị</a></li>
-                <li><a href="#" class="nav-link link-dark">Quản lý kịch bản</a></li>
+                <li><a href="#" class="nav-link link-dark dashboard_mode">
+                    <img src="./img/dashboard.png" alt="dashboard" class="img">
+                    Bảng điều khiển
+                </a></li>
+                
+                <li><a href="#" class="nav-link link-dark device_mode">
+                    <img src="./img/device.png" alt="device" class="img">
+                    Quản lý thiết bị
+                </a></li>
+                <li><a href="#" class="nav-link link-dark scene_mode">
+                    <img src="./img/clapperboard.png" alt="clapperboard" class="img">
+                    Quản lý bối cảnh
+                </a></li>
                 <hr>
-                <li><a href="#" class="nav-link link-dark">Cài đặt</a></li>
-                <li><a href="#" class="nav-link link-dark">Nâng cấp</a></li>
-                <li><a href="#" class="nav-link link-dark normal_mode">Chế độ Normal</a></li>
-                <li><a href="#" class="nav-link link-dark focus_mode">Chế độ Focus</a></li>
+                <li><a href="#" class="nav-link link-dark">
+                    <img src="./img/settings.png" alt="settings" class="img">
+                    Cài đặt
+                </a></li>
+                <li><a href="#" class="nav-link link-dark">
+                    <img src="./img/up.png" alt="up" class="img">
+                    Nâng cấp
+                </a></li>
+                <li><a href="#" class="nav-link link-dark normal_mode">
+                    <img src="./img/magnifying-glass.png" alt="normal_mode" class="img">
+                    Chế độ Normal
+                </a></li>
+                <li><a href="#" class="nav-link link-dark focus_mode">
+                    <img src="./img/zoom.png" alt="focus_mode" class="img">
+                    Chế độ Focus
+                </a></li>
             </ul>
         </div>
 
@@ -49,81 +71,43 @@
                         <div class="d-flex flex-column weather_info">
                             <div class="temp_weather">25 độ C</div>
                             <div class="description_weather">Nắng</div>
-                            <div class="location_weather">Thành Phố Hồ Chí Minh</div>
-                            
+                            <div class="location_weather">Thành Phố Hồ Chí Minh</div>    
                         </div>
                     </div>        
                 </div>
 
             </div>
 
-            <div class="iot">
-                <!-- <div class="roomName">Phòng khách</div>
-
-                <div class="d-flex flex-row" style="flex-wrap: wrap;">
-                    <div class="card" style="width: 30%; height: 100px; margin: 10px;">
-                        <div class="card-body">
-                            <div class="d-flex flex-row">
-                                <h5 class="card-room" style="width: 90%;">Đèn</h5>
-                                <div class="form-check form-switch" style="margin: 0px 10px; width: 10%;">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                                </div>  
-                            </div>
-                            <p class="card-attr">Độ sáng: 2</p>
-                        </div>
-                    </div>
-
-                    <div class="card" style="width: 30%; height: 100px; margin: 10px;">
-                        <div class="card-body">
-                            <div class="d-flex flex-row">
-                                <h5 class="card-room" style="width: 90%;">Quạt</h5>
-                                <div class="form-check form-switch" style="margin: 0px 10px; width: 10%;">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" unchecked>
-                                </div>  
-                            </div>
-                            <p class="card-attr">Tốc độ: 0</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="roomName">Phòng ngủ</div>
-
-                <div class="d-flex flex-row" style="flex-wrap: wrap;">
-                    <div class="card" style="width: 30%; height: 100px; margin: 10px;">
-                        <div class="card-body">
-                            <div class="d-flex flex-row">
-                                <h5 class="card-room" style="width: 90%;">Đèn</h5>
-                                <div class="form-check form-switch" style="margin: 0px 10px; width: 10%;">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" unchecked>
-                                </div>  
-                            </div>
-                            <p class="card-attr">Độ sáng: 8</p>
-                        </div>
-                    </div>
-    
-                    <div class="card" style="width: 30%; height: 100px; margin: 10px;">
-                        <div class="card-body">
-                            <div class="d-flex flex-row">
-                                <h5 class="card-room" style="width: 90%;">Tivi</h5>
-                                <div class="form-check form-switch" style="margin: 0px 10px; width: 10%;">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" unchecked>
-                                </div>  
-                            </div>
-                            <p class="card-attr">Âm lượng: 8</p>
-                        </div>
-                    </div>
-                </div> -->
-
-            </div>
+            <br>
+            <div class="iot"></div>
         </div>
 
         <!-- sidebar_right -->
         <div class="d-flex flex-column sidebar_right">
             <div class="iotManager" style="display: none;"></div>
 
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <div class="sceneManager" style="display: none">
+                <div class="d-flex flex-row">
+                    <div class="sceneSelection">
+
+                        <div class="search_main">
+                            <div class="input-group">
+                                <input type="search" class="form-control rounded searchbarscene" placeholder="Tìm kiếm"/>
+                                <button type="button" class="btn btn-outline-primary searchscene">Tìm kiếm</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="d-flex flex-column sceneIFTHEN">
+                        <div class="sceneIF">IF</div>
+                        <div class="sceneTHEN">THEN</div>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="margin-left: 10px;">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                    <button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="false">
                         Trang chủ
                     </button>
                 </li>
@@ -145,8 +129,20 @@
             </ul>
 
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                    Trang chủ
+                <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="homeitems">
+                        Trang chủ
+                        <div class="myNetwork"></div>
+                        <div class="myDevice"></div>
+                        <div class="phone" style="margin: 20px;">
+                            <div class="input-group">
+                                <input type="text" class="form-control rounded callNumber"/>
+                                <a href="" class="linkCall">
+                                    <button type="button" class="btn btn-outline-primary btnCall">Gọi</button>
+                                </a>                          
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="tab-pane fade" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab">
@@ -175,12 +171,15 @@
             </div>
         </div>
     </div>
+
+    
     
     <script src="./modules/variable.js"></script>
     <script src="./modules/search.js"></script>  
     <script src="./modules/clock.js"></script>
     <script src="./modules/mode.js"></script>
     <script src="./modules/api.js"></script>
+    <script src="./modules/call.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

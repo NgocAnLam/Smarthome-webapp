@@ -16,6 +16,6 @@ async function getEmbedding(message){
     } catch (err) {
         console.error('ERROR:', err);
         return "An error occurred from OpenAI Embedding API";
-      }
+    }
 }
 module.exports = getEmbedding;

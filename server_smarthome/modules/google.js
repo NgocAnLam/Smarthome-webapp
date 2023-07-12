@@ -15,10 +15,17 @@ class GoogleSTT extends speech.SpeechClient {
             sampleRateHertz: 16000, 
             languageCode: 'vi-VN', 
             speechContexts:[{
-                phrases: ["$POSTALCODE", "$PERCENT"],
-            }
-                
-            ]};
+                phrases: [
+                    '$POSTALCODE', 
+                    '$PERCENT', 
+                    '$ADDRESSNUM',
+                    '$FULLPHONENUM',
+                    '$MONEY',
+                    '$OPERAND',
+                    '$TIME'
+                ],
+            }],
+        };
         let request = {audio: audio, config: config};
         try {
             let [response] = await this.recognize(request);

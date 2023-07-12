@@ -5,31 +5,21 @@
       "trạng thái": 0,
       "độ sáng": 2
     },
-    "đèn 1": {
-      "idDiv": "living_light_1",
-      "trạng thái": 0,
-      "độ sáng": 2
-    },
-    "đèn 2": {
-      "idDiv": "living_light_2",
-      "trạng thái": 0,
-      "độ sáng": 2
-    },
     "quạt": {
       "idDiv": "living_fan",
       "trạng thái": 1,
       "tốc độ": 2
     },
-    "loa":{
+    "loa": {
       "idDiv": "living_fan",
-      "trạng thái": 1,
-      "tốc độ": 2
-    }   
+      "trạng thái": 0,
+      "âm lượng": 20
+    }
   },
   "phòng ngủ": {
     "đèn": {
       "idDiv": "bed_light",
-      "trạng thái": 0,
+      "trạng thái": 1,
       "độ sáng": 0
     },
     "loa": {
@@ -37,7 +27,7 @@
       "trạng thái": 1,
       "âm lượng": 0
     },
-    "máy lạnh":{
+    "máy lạnh": {
       "idDiv": "bed_air_conditioner",
       "trạng thái": 1,
       "nhiệt độ": 26
@@ -45,7 +35,7 @@
     "máy chiếu": {
       "idDiv": "bed_projecter",
       "trạng thái": 0,
-      "độ sáng": 20 
+      "độ sáng": 20
     }
   },
   "nhà bếp": {

@@ -1,7 +1,7 @@
 const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 recognition.lang = 'vi-VN';
 recognition.continuous = true;
-// recognition.interimResults = true;
+recognition.interimResults = false;
 recognition.start();
 let isRecognizing = false;
 
@@ -20,6 +20,14 @@ recognition.onresult = (event) => {
             const mediaRecorder = new MediaRecorder(stream);   
                 
             // start record
+            var audio = document.createElement("audio");
+            audio.controls = true;
+            audio.autoplay = true;
+            var source = document.createElement("source");
+            source.src = "./okgoogle.mp3";
+            source.type = "audio/mpeg";
+            audio.appendChild(source);
+
             console.log("recorder started");
             mediaRecorder.start();
             searchbarhome.value = '';
@@ -58,11 +66,9 @@ recognition.onresult = (event) => {
                         // Shopping
                         if (message.category == 2) {
                             pillsChatbotTab.className = 'nav-link';
-                            pillsHomeTab.className = 'nav-link';
                             pillsNewsTab.className = 'nav-link';
                             pillsShoppingTab.className = 'nav-link active';
                             pillsChatbot.className = 'tab-pane fade';
-                            pillsHome.className = 'tab-pane fade';
                             pillsNews.className = 'tab-pane fade';
                             pillsShopping.className = 'tab-pane fade show active';
                             getShopping("http://127.0.0.1:8000/api/shopping", message.STTRes);       
@@ -72,14 +78,11 @@ recognition.onresult = (event) => {
                         if (message.category == 3) {
                             addChatUser(message.STTRes);
                             pillsChatbotTab.className = 'nav-link active';
-                            pillsHomeTab.className = 'nav-link';
                             pillsNewsTab.className = 'nav-link';
                             pillsShoppingTab.className = 'nav-link';
                             pillsChatbot.className = 'tab-pane fade show active';
-                            pillsHome.className = 'tab-pane fade';
                             pillsNews.className = 'tab-pane fade';
                             pillsShopping.className = 'tab-pane fade';
-
                             getQuestion('http://127.0.0.1:8000/api/question', 'http://127.0.0.1:8000/api/TTS.mp3', message.STTRes)
                         }
         
@@ -87,25 +90,20 @@ recognition.onresult = (event) => {
                         if (message.category == 4) {
                             addChatUser(message.STTRes);
                             pillsChatbotTab.className = 'nav-link active';
-                            pillsHomeTab.className = 'nav-link';
                             pillsNewsTab.className = 'nav-link';
                             pillsShoppingTab.className = 'nav-link';
                             pillsChatbot.className = 'tab-pane fade show active';
-                            pillsHome.className = 'tab-pane fade';
                             pillsNews.className = 'tab-pane fade';
-                            pillsShopping.className = 'tab-pane fade';
-                
+                            pillsShopping.className = 'tab-pane fade';   
                             getImage('http://127.0.0.1:8000/api/image_gen', message.STTRes);
                         }
         
                         // News
                         if (message.category == 5) {
                             pillsChatbotTab.className = 'nav-link ';
-                            pillsHomeTab.className = 'nav-link';
                             pillsNewsTab.className = 'nav-link active';
                             pillsShoppingTab.className = 'nav-link';
                             pillsChatbot.className = 'tab-pane fade ';
-                            pillsHome.className = 'tab-pane fade';
                             pillsNews.className = 'tab-pane fade show active';
                             pillsShopping.className = 'tab-pane fade';
 

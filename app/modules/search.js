@@ -50,11 +50,9 @@ function output(text) {
         // Shopping
         if (message.category == 2) {
             pillsChatbotTab.className = 'nav-link';
-            pillsHomeTab.className = 'nav-link';
             pillsNewsTab.className = 'nav-link';
             pillsShoppingTab.className = 'nav-link active';
             pillsChatbot.className = 'tab-pane fade';
-            pillsHome.className = 'tab-pane fade';
             pillsNews.className = 'tab-pane fade';
             pillsShopping.className = 'tab-pane fade show active';
             getShopping("http://127.0.0.1:8000/api/shopping", message.STTRes);       
@@ -64,11 +62,9 @@ function output(text) {
         if (message.category == 3) {
             addChatUser(message.STTRes);
             pillsChatbotTab.className = 'nav-link active';
-            pillsHomeTab.className = 'nav-link';
             pillsNewsTab.className = 'nav-link';
             pillsShoppingTab.className = 'nav-link';
             pillsChatbot.className = 'tab-pane fade show active';
-            pillsHome.className = 'tab-pane fade';
             pillsNews.className = 'tab-pane fade';
             pillsShopping.className = 'tab-pane fade';
 
@@ -79,11 +75,9 @@ function output(text) {
         if (message.category == 4) {
             addChatUser(message.STTRes);
             pillsChatbotTab.className = 'nav-link active';
-            pillsHomeTab.className = 'nav-link';
             pillsNewsTab.className = 'nav-link';
             pillsShoppingTab.className = 'nav-link';
             pillsChatbot.className = 'tab-pane fade show active';
-            pillsHome.className = 'tab-pane fade';
             pillsNews.className = 'tab-pane fade';
             pillsShopping.className = 'tab-pane fade';
 
@@ -93,11 +87,9 @@ function output(text) {
         // News
         if (message.category == 5) {
             pillsChatbotTab.className = 'nav-link ';
-            pillsHomeTab.className = 'nav-link';
             pillsNewsTab.className = 'nav-link active';
             pillsShoppingTab.className = 'nav-link';
             pillsChatbot.className = 'tab-pane fade ';
-            pillsHome.className = 'tab-pane fade';
             pillsNews.className = 'tab-pane fade show active';
             pillsShopping.className = 'tab-pane fade';
 

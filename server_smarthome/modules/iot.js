@@ -1,5 +1,6 @@
 const fs = require('fs');
 const smarthome = require('../smarthome.json');
+// const StringToNumber = require('./utils/stringtonumber.js');
 
 class IOT {
    
@@ -37,6 +38,7 @@ class IOT {
     }
     
     async process(statement){
+        
         return new Promise((resolve, reject) => {
             fs.readFile('D:/Smarthome-webapp/server_smarthome/smarthome.json', 'utf8', (err, data) => {
                 if (err) {
@@ -46,6 +48,8 @@ class IOT {
                 else {
                     try {         
                         var smarthome = JSON.parse(data);
+                        // statement = StringToNumber(statement);
+
                         var location;
                         var device;
                         var attribute;

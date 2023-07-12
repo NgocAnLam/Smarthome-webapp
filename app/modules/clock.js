@@ -3,8 +3,8 @@ function updateClock() {
     var hours = now.getHours();
     const dayOfWeek = now.getDay();
     const vietnameseDaysOfWeek = ['Chủ nhật','Thứ hai','Thứ ba','Thứ tư','Thứ năm','Thứ sáu','Thứ bảy'];
-    var date1 = now.getDate() + '/' + formatDigits((Number(now.getMonth()) + 1)).toString() + '/' + now.getFullYear();
-    var date2 = now.getHours() + ":" + formatDigits(now.getMinutes()) + ":" + formatDigits(now.getSeconds());
+    var date1 = formatDigits(now.getDate()) + '/' + formatDigits((Number(now.getMonth()) + 1)).toString() + '/' + now.getFullYear();
+    var date2 = formatDigits(now.getHours()) + ":" + formatDigits(now.getMinutes()) + ":" + formatDigits(now.getSeconds());
     var time = vietnameseDaysOfWeek[dayOfWeek] + '   ' + date1 + '   ' + date2;
     if (hours >= 5 && hours < 12){hello.innerHTML = 'Chào buổi sáng, Viettel';}
     else if (hours >= 12 && hours < 18){hello.innerHTML = 'Chào buổi chiều, Viettel'; }

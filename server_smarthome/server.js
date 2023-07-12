@@ -7,9 +7,12 @@ const bodyParser = require('body-parser');
 const shopping = require('./modules/shopping.js');
 const getType = require('./utils/command_classify');
 const news = require('./modules/news.js');
-const weather = require('./modules/weather.js');
+const Weather = require('./modules/weather.js');
 const ImageGenerator = require('./modules/image_gen.js');
 const fs = require('fs');
+const { Console } = require('console');
+const wifi = require('./modules/wifi.js');
+
 
 const app = express();
 const port = 8000;
@@ -33,7 +36,8 @@ const smarthome = new IOT.IOT();
 const shoppingItems = new shopping.Shopping(); 
 const newsItems = new news.News();
 const imageGen = new ImageGenerator();
-const weatherForecast = new weather();
+const weather = new Weather();
+const Wifi = new wifi();
 
 let ChatGPT;
 
@@ -113,10 +117,8 @@ app.post('/api/category', upload.single('audio'), async (req, res) => {
     const file = req.file;
     var category;
     const audioBytes = file.buffer.toString('base64');
-
     STTRes = await stt.speech_to_text(audioBytes);
     STTRes = STTRes.toLowerCase();
-
     console.log(`STTRes: ${STTRes}`);
 
     if (STTRes.includes('tin tức')) {
@@ -144,10 +146,37 @@ app.post('/api/categoryType', async (req, res) => {
     }
 });
 
-app.get('/api/weather', async (req, res) => {
-    weatherInfo = await weatherForecast.getData();
+app.post('/api/weather', async (req, res) => {
+    var location = req.body;
+    location = location.split(',');
+    const lat = location[1];
+    const long = location[0];
+    weatherInfo = await weather.getData(long, lat);
     res.send(weatherInfo);    
 })
 
+app.post('/api/wifiCurrentNetwork', async (req, res) => {
+    try {
+        const wifiInfoCurrentNetwork = await Wifi.currentNetwork();
+        const ipPublic = await Wifi.getPublicIP('192.168.31.80');
+        const infoIPPublic = await Wifi.getInfoIPPublic(ipPublic);
+        res.send(wifiInfoCurrentNetwork);
+    } 
+    catch (error) {
+        console.log('Error:', error);
+        res.status(500).send('Internal Server Error');
+    }
+})
+
+app.post('/api/wifiDeviceConnectList', async (req, res) => {
+    try {
+        DeviceConnectList = await Wifi.deviceConnectList('192.168.31.1', '192.168.31.254');
+        res.send(DeviceConnectList);
+    } 
+    catch (error) {
+        console.log('Error:', error);
+        res.status(500).send('Internal Server Error');
+    }
+})
 
 app.listen(port, () => console.log(`Server is running http://localhost:${port}`));

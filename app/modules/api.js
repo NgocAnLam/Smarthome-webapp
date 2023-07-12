@@ -1,62 +1,3 @@
-function getNews (url){
-    fetch(url, {method: 'POST', headers: {'Content-Type': 'text/plain'}})
-    .then(response => response.json())
-    .then(message => {
-        for (let i = 0; i < 10; i++) {
-            const { title, descript, link, image, date} = message.news[i];
-            
-            const card = document.createElement('div');
-            card.className = 'd-flex flex-row cardnews';
-            card.style.width = '100%';
-            card.style.border = '1px solid black';
-            card.style.margin = '10px';
-            
-            const img = document.createElement('img');
-            img.className = 'd-flex flex-row card-img-top';
-            img.src = image;
-            img.style.width = '40%';
-            img.style.height = '100%';
-            
-            const cardBody = document.createElement('div');
-            cardBody.className = 'd-flex flex-column card-body';
-            
-            const cardTitle = document.createElement('h5');
-            cardTitle.className = 'card-title';
-            cardTitle.style.paddingTop = '5px';
-            cardTitle.style.paddingLeft = '5px';
-            cardTitle.textContent = title;
-            
-            const cardDescript = document.createElement('p');
-            cardDescript.className = 'card-description';
-            cardDescript.style.fontSize = '10px';
-            cardDescript.style.paddingLeft = '5px';
-            cardDescript.textContent = descript;
-
-            const cardDate = document.createElement('p');
-            cardDate.className = 'card-date';
-            cardDate.style.fontSize = '10px';
-            cardDate.style.paddingLeft = '5px';
-            cardDate.textContent = date;
-            
-            const buyLink = document.createElement('a');
-            buyLink.href = link;
-            buyLink.className = 'btn btn-primary';
-            buyLink.textContent = 'Xem thêm';
-
-            card.appendChild(img);
-            cardBody.appendChild(cardTitle);
-            cardBody.appendChild(cardDescript);
-            cardBody.appendChild(cardDate);
-            cardBody.appendChild(buyLink);
-            card.appendChild(cardBody);
-
-            const newsitems = document.querySelector('.newsitems');
-            newsitems.appendChild(card);
-        }
-    })
-    .catch(error => {console.error(error)});
-}
-
 function getImage(url, text){
     fetch(url, {
         method: 'POST', 
@@ -92,15 +33,13 @@ function getIOT(url){
         var container = document.createElement("div");
         container.className = 'container';
 
-        
         var countRoom = 0;
         var maxcountRoom = 3;
 
         for (var room in message) {
             var locationCard = document.createElement("div");
             locationCard.className = "locationCard";
-            locationCard.textContent = room.charAt(0).toUpperCase() + room.slice(1);;
-            
+            locationCard.textContent = room.charAt(0).toUpperCase() + room.slice(1);;      
             container.appendChild(locationCard);
 
             var devices = message[room];
@@ -114,7 +53,7 @@ function getIOT(url){
                 var iotInfoCard = document.createElement("div");
                 iotInfoCard.className = "iotInfoCard";
                 iotInfoCard.style.width = "30%";
-                iotInfoCard.style.height = "100px";
+                iotInfoCard.style.height = "70px";
                 iotInfoCard.style.margin = "10px";
                 iotInfoCard.style.padding = "10px";
                 iotInfoCard.style.borderRadius = "10px";
@@ -178,6 +117,7 @@ function getIOT(url){
             
         }
         iot.appendChild(container);
+        iot.style.marginTop = "50px";
     })
     .catch(error => {console.error(error)});
 }
@@ -358,17 +298,25 @@ function getNews(url){
             
             const card = document.createElement('div');
             card.className = 'd-flex flex-column cardnews';
-            card.style.width = '98%';
-            card.style.border = '1px solid black';
-            card.style.margin = '5px';
-            card.style.padding = '5px';
-            card.href = link;
+            card.style.width = '97%';
+            card.style.margin = '7px';
+            card.style.padding = '10px';
+            card.style.borderRadius = '10px';
+            card.style.backgroundColor = '#FFFFFF';
 
             const cardTitle = document.createElement('h5');
             cardTitle.className = 'card-title';
-            cardTitle.style.paddingTop = '5px';
-            cardTitle.style.paddingLeft = '5px';
-            cardTitle.textContent = title;
+
+            const linktag = document.createElement('a');
+            linktag.href = link;
+            linktag.textContent = title;
+            linktag.style.padding = '10px';
+            linktag.style.margin = '10px';
+            linktag.style.fontSize = '15px';
+            linktag.style.color = '#000000';
+            linktag.style.textDecoration = 'none';
+
+            cardTitle.appendChild(linktag);
 
             const cardBody = document.createElement('div');
             cardBody.className = 'd-flex flex-row card-body';
@@ -382,6 +330,8 @@ function getNews(url){
             img.alt = 'Tin tức';
             img.style.width = '120px';
             img.style.height = '80px';
+            img.style.borderRadius = '10px';
+            img.style.margin = '10px'
             
             const cardDescript = document.createElement('p');
             cardDescript.className = 'card-description';
@@ -394,9 +344,6 @@ function getNews(url){
             cardDate.style.fontSize = '10px';
             cardDate.style.paddingLeft = '5px';
             cardDate.textContent = date;
-            
-            const Link = document.createElement('a');
-            Link.href = link;
 
             card.appendChild(cardTitle);
             cardBody.appendChild(img);
@@ -404,6 +351,7 @@ function getNews(url){
             cardBodyText.appendChild(cardDescript);
             cardBodyText.appendChild(cardDate);
             card.appendChild(cardBody);
+            // card.appendChild(linktag);
 
             const newsitems = document.querySelector('.newsitems');
             newsitems.appendChild(card);
@@ -412,24 +360,91 @@ function getNews(url){
     .catch(error => {console.error(error)});
 }
 
-function getWeather(url){
-    fetch(url)
+function getCurrentPositionWithGeolocation(callback) {
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
+    };
+  
+    function success(pos) {
+        var lat = pos.coords.latitude;
+        var long = pos.coords.longitude;
+        callback(long, lat);
+    } 
+    function error(err) {console.warn(`ERROR(${err.code}): ${err.message}`);} 
+    navigator.geolocation.getCurrentPosition(success, error, options);
+}
+  
+function getWeather(url, long, lat){
+    fetch(url, {
+        method: 'POST',
+        headers: {'Content-Type': 'text/plain'}, 
+        body: [long, lat]}
+    )
     .then(response => response.json())
     .then(message => {
-        console.log(message);
+        // console.log(message);
         descriptionweather.textContent = message.weather[0].description;
         locationWeather.textContent = message.name;
-        tempWeather.textContent = message.main.temp + ' oC';
+        tempWeather.textContent = message.main.temp + ' \u00B0' + 'C';
         icon.src = `https://openweathermap.org/img/wn/${message.weather[0].icon}@2x.png`;
-
     })
     .catch(error => {console.error(error)});
 }
 
-setInterval(() => getWeather("http://127.0.0.1:8000/api/weather"), 60000);
+function getWifiCurrentNetwork(url){
+    fetch(url, {method: 'POST', headers: {'Content-Type': 'text/plain'}})
+    .then(response => response.json())
+    .then(message => {console.log(JSON.stringify(message))})
+    .catch(error => {console.error(error)});
+}
+
+function getWifiDeviceConnectList(url){
+    fetch(url, {method: 'POST', headers: {'Content-Type': 'text/plain'}})
+    .then(response => response.json())
+    .then(message => {
+        console.log(JSON.stringify(message));
+    })
+    .catch(error => {console.error(error)});
+}
+
+function getInfoIPPublic(){
+    fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+        fetch('http://ip-api.com/json/' + data.ip)
+        .then(response => response.json())
+        .then(message => {console.log(JSON.stringify(message))})
+        .catch(error => {console.log('Đã xảy ra lỗi khi truy vấn thông tin:', error.message)});
+    })
+    .catch(error => {console.log(error)});
+}
+
+function getDeviceList(){
+}  
+
+setInterval(() => {
+    getCurrentPositionWithGeolocation(function(lat, long) {
+      getWeather("http://127.0.0.1:8000/api/weather", lat, long);
+    });
+}, 60000);
+
 window.addEventListener('load', () => {
+    getCurrentPositionWithGeolocation(function(long, lat) {
+        getWeather("http://127.0.0.1:8000/api/weather", long, lat);
+    });
     getIOT("http://127.0.0.1:8000/api/smarthome.json");
-    getNews("http://127.0.0.1:8000/api/news");
-    getWeather("http://127.0.0.1:8000/api/weather");
+    getNews("http://127.0.0.1:8000/api/news");  
     getIOTManager("http://127.0.0.1:8000/api/smarthome.json");
+    getWifiCurrentNetwork("http://127.0.0.1:8000/api/wifiCurrentNetwork");
+    getWifiDeviceConnectList("http://127.0.0.1:8000/api/wifiDeviceConnectList");
+    getInfoIPPublic();
+    getDeviceList();
+    pillsChatbotTab.className = 'nav-link';
+    pillsNewsTab.className = 'nav-link active';
+    pillsShoppingTab.className = 'nav-link';
+    pillsChatbot.className = 'tab-pane fade';
+    pillsNews.className = 'tab-pane fade show active';
+    pillsShopping.className = 'tab-pane fade';    
 });

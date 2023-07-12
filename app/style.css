@@ -14,50 +14,88 @@ html {
 
 .sidebar_left {
     width: 15%;
-    border: 1px solid #000000;
+    /* border: 1px solid #000000; */
+    background-color: #ffffff;
 }
 
 .sidebar_left .title {
     text-decoration: none;
-    color: #000000;
+    color: #4e7d96;
     
 }
 
-.sidebar_left h4{
+.sidebar_left h3{
     padding-left: 10%;
     padding-top: 10%;
+    font-size: 20px;
 }
+
+.sidebar_left .nav-link {
+    font-size: 15px;
+}
+
+.sidebar_left .img{
+    width: 10px;
+    height: 10px;
+}
+
 
 .main {
     width: 55%;
-    border: 1px solid #000000;
+    background-color: #f1f6fa;
 }
 
 .main .search_main {
-    height: 8%;
+    height: 10%;
     margin: 10px;
 }
 
-.main .hello, .weather_main{
-    width: 50%;
+.main .hello{
+    width: 60%;
     height: 100%;
     margin: 0px 5px;
-    background-color: #ebedee;
-    border-radius: 10px;
     max-width: 50%;
     max-height: 100px;
 }
 
+.main .weather_main{
+    width: 40%;
+    height: 100%;
+    margin: 0px 5px;
+    max-width: 50%;
+    max-height: 100px;
+    border-radius: 20px;
+    background-color: #3385f8;
+    color: #fff;
+}
+
 .main .hello_main, .clock_main {
-    font-size: 150%;
     text-align: left;
     margin: 10px;
+}
+
+.main .hello_main{
+    font-size: 30px;
+    color: #1f2237;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main .clock_main{
+    font-size: 15px;
+    color: #cbd0d7;
 }
 
 .main .weather_main .icon_weather {
     width: 40%;
     height: 100px;
-    border: 1px solid #000000;
+    border-radius: 20px;
+    background-color: #ffffff;
+    
+}
+
+.main .weather_main .icon_weather .icon {
+    -webkit-filter: drop-shadow(5px 5px 5px #cdcdcd);
+    filter: drop-shadow(10px 10px 5px #c6c6c6);
 }
 
 .main .weather_main .weather_info {
@@ -78,12 +116,12 @@ html {
 .main .iot, .iotManager{
     width: calc(100% -10px);
     height: 100%;
-    margin: 20px 10px 10px 10px;
+    margin: 5px 5px 5px 5px;
 }
 
 .main .iot .locationCard, .iotManager .locationCard{
-    height: 10px; 
-    margin: 5px; 
+    height: 20px; 
+    margin: 3px; 
     display: flex; 
     justify-content: center; 
     align-items: center;
@@ -94,13 +132,14 @@ html {
 .main .iot .iotInfoCard, .iotManager .iotInfoCard{
     width: 30%; 
     height: 100px; 
-    margin: 10px;
-    border: 1px solid #000000
+    margin: 5px;
+    background-color: #ffffff;
 }
 
 .sidebar_right {
     width: 30%;
-    border: 1px solid #000000;
+    /* border: 1px solid #000000; */
+    background-color: #e3edf2;
 }
 
 .sidebar_right .nav-item {
@@ -187,7 +226,7 @@ html {
     width: 30%; 
     height: 100px; 
     margin: 10px;
-    border: 1px solid #000000
+    background-color: #ffffff;
 }
 
 body .card {
@@ -268,4 +307,32 @@ body .card #input-section input {
     border-right: none;
     border-bottom: solid #000 1px;
     margin-bottom: 10px;
+}
+
+.sidebar_right .sceneManager{
+    width: calc(100% -10px);
+    height: 100vh;
+    border: 1px solid #000;
+}
+
+.sidebar_right .sceneManager .sceneSelection{
+    width: 50%;
+    height: 100vh;
+    border: 1px solid #000;
+}
+
+.sidebar_right .sceneManager .sceneIFTHEN{
+    width: 50%;
+    height: 100vh;
+    border: 1px solid #000;
+}
+
+.sidebar_right .sceneManager .sceneIF{
+    height: 30%;
+    border: 1px solid #000;
+}
+
+.sidebar_right .sceneManager .sceneTHEN{
+    height: 70%;
+    border: 1px solid #000;
 }

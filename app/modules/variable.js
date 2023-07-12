@@ -37,3 +37,11 @@ const container = document.querySelectorAll('.container');
 const iotManager = document.querySelector('.iotManager');
 const deviceMode = document.querySelector('.device_mode');
 const main = document.querySelector('.main');
+const dashboardMode = document.querySelector('.dashboard_mode');
+
+const btnCall = document.querySelector('.btnCall');
+const callNumber = document.querySelector('.callNumber');
+const linkCall = document.querySelector('.linkCall');
+
+const sceneManager = document.querySelector('.sceneManager');
+const sceneMode = document.querySelector('.scene_mode');

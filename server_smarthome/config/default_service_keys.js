@@ -7,7 +7,7 @@ function getGoogleAuthConfig() {
 
 function getOpenAIKey(){
     return({
-        apiKey: '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'
+        apiKey: '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',
     })
 }
 
