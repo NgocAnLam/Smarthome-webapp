@@ -89,12 +89,6 @@ app.post('/api/shopping', async (req, res) => {
         const mess = response.mess;
         const jsondata = response.jsondata;
         res.send({mess, jsondata});
-
-        app.get('/api/ShoppingTTS.mp3', async (req, res) => {
-            TTSRes = await tts.text_to_speech(mess);
-            res.setHeader('Content-Type', 'audio/mpeg');
-            res.send(TTSRes);
-        }); 
     })
     .catch(error => {console.error(error);});
 });
